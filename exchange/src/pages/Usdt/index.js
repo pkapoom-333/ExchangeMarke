@@ -1,5 +1,6 @@
 import React from "react";
+import Ticker from "../../componets/commons/Ticker";
 
 export default function Usdt() {
-  return <div>Usdt</div>;
+  return <Ticker currencyPair={"usdt_thb"} />;
 }

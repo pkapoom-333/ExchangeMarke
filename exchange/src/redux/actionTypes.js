@@ -1,0 +1,2 @@
+export const SETTICKERDATA = "SET_TICKER_DATA";
+export const FETCHDATA = "FETCH_DATA";

@@ -3,14 +3,25 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { legacy_createStore as createStore, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
 import { BrowserRouter } from "react-router-dom";
+import rootReducer from "./redux/reducers/counter.reducer";
+import rootSaga from "./redux/sagas/counter.sage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
